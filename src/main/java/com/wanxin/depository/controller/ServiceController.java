@@ -123,7 +123,7 @@ public class ServiceController {
             @ApiImplicitParam(name = "reqData", value = "业务数据报文, JSON 格式", required = true, dataType = "String", paramType = "query"),})
     @GetMapping(value = "/service", params = "serviceName=CONFIRM_REPAYMENT")
     public DepositoryResponse<ConfirmRepaymentResponse> confirmRepayment(@RequestParam String serviceName, @RequestParam String platformNo, @RequestParam String signature, @RequestParam String reqData) {
-        ConfirmRepaymentResponse repaymentResponse = new ConfirmRepaymentResponse();
+        ConfirmRepaymentResponse repaymentResponse = balanceDetailsService.confirmRepayment(reqData);
         return new DepositoryResponse<>(repaymentResponse);
     }
 }
